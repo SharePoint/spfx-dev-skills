@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 720px; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(120% 120% at 0% 0%, #0a4a4f 0%, #036c70 45%, #038387 100%);
+    color: #ffffff;
+    width: 1280px; height: 720px;
+    padding: 56px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .glow {
+    position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35;
+  }
+  .glow.one { width: 420px; height: 420px; background: #2aa0a4; top: -160px; right: -120px; }
+  .glow.two { width: 360px; height: 360px; background: #00565b; bottom: -180px; left: -100px; }
+
+  header { display: flex; align-items: center; gap: 22px; position: relative; z-index: 2; }
+  .logo {
+    width: 76px; height: 76px; border-radius: 18px;
+    background: linear-gradient(135deg, #03787c, #4fd1c5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  h1 { font-size: 52px; font-weight: 700; letter-spacing: -0.5px; }
+  .sub { font-size: 21px; color: #c8f1f0; margin-top: 4px; font-weight: 400; }
+
+  .pill {
+    display: inline-block; margin-top: 26px; padding: 8px 18px; border-radius: 999px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+    font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: #e8fffe;
+    position: relative; z-index: 2;
+  }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin-top: 34px; position: relative; z-index: 2;
+  }
+  .card {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px; padding: 22px 22px 20px;
+    backdrop-filter: blur(2px);
+  }
+  .card .ico { font-size: 30px; margin-bottom: 12px; }
+  .card h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 15.5px; line-height: 1.45; color: #d6f3f2; }
+  .card .tag { display:inline-block; margin-top:12px; font-size:12.5px; letter-spacing:1px;
+    text-transform:uppercase; color:#9be8e4; }
+
+  footer {
+    position: absolute; bottom: 30px; left: 64px; right: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 16px; color: #bfeeed; z-index: 2;
+  }
+  .flow { display:flex; align-items:center; gap:10px; font-weight:600; color:#eafffe; }
+  .flow span.dot { opacity:0.5; }
+  .lic { color:#9be8e4; }
+</style>
+</head>
+<body>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <header>
+    <div class="logo">SP</div>
+    <div>
+      <h1>SPFx Dev Skills</h1>
+      <div class="sub">Agent skills for SharePoint Framework development</div>
+    </div>
+  </header>
+
+  <div class="pill">Skill &nbsp;&middot;&nbsp; spfx</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="ico">🛠️</div>
+      <h3>Create</h3>
+      <p>Scaffold web parts &amp; extensions with the Yeoman generator — Heft by default.</p>
+      <div class="tag">create.md</div>
+    </div>
+    <div class="card">
+      <div class="ico">⬆️</div>
+      <h3>Upgrade</h3>
+      <p>Version upgrades via CLI for Microsoft 365, with the gulp → Heft migration path.</p>
+      <div class="tag">upgrade.md</div>
+    </div>
+    <div class="card">
+      <div class="ico">🎨</div>
+      <h3>React Design</h3>
+      <p>Fluent UI v9 UI contract — theming, accessibility, host-aware layout.</p>
+      <div class="tag">react-design.md</div>
+    </div>
+    <div class="card">
+      <div class="ico">⚙️</div>
+      <h3>Toolchain</h3>
+      <p>Version-aware build: Heft for v1.22+, gulp for v1.21.1 and earlier.</p>
+      <div class="tag">toolchain.md</div>
+    </div>
+    <div class="card">
+      <div class="ico">🔗</div>
+      <h3>PnPjs Data</h3>
+      <p>Default data layer for SharePoint &amp; Microsoft Graph operations.</p>
+      <div class="tag">pnpjs.md</div>
+    </div>
+    <div class="card" style="background:rgba(79,209,197,0.16); border-color:rgba(79,209,197,0.4);">
+      <div class="ico">🤖</div>
+      <h3>Agent-ready</h3>
+      <p>Non-interactive commands, version detection, clean-build validation.</p>
+      <div class="tag">global rules</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="flow">scaffold <span class="dot">→</span> design <span class="dot">→</span> build <span class="dot">→</span> upgrade <span class="dot">→</span> deploy</div>
+    <div class="lic">MIT Licensed</div>
+  </footer>
+</body>
+</html>
