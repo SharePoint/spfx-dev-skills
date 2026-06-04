@@ -1,17 +1,5 @@
 # Create SPFx Project
 
-## Gather requirements first
-
-Confirm these inputs before scaffolding. Ask the user only when genuinely ambiguous; otherwise pick the sensible default.
-
-| Input | Flag | Values / default |
-| --- | --- | --- |
-| Solution name | `--solution-name` | lowercase/kebab-case, unique in the tenant app catalog |
-| Framework | `--framework` | `react` (default), `none`, `minimal` |
-| Component type | `--component-type` | `webpart` (default), `extension`, `library`, `adaptiveCardExtension` |
-| Component name | `--component-name` | PascalCase, e.g. `HelloWorld` |
-| Extension type (extensions only) | `--extension-type` | `ApplicationCustomizer`, `FieldCustomizer`, `ListViewCommandSet` |
-
 ## Environment check
 
 Run `npx --package @pnp/cli-microsoft365@latest -- m365 spfx doctor` to verify Node version, npm version, and other prerequisites. If Node is incompatible, check for `fnm` or `nvm` and try to switch to a compatible version. If no version manager is available, no compatible version is installed, or other errors remain, **stop and tell the user** what needs fixing before proceeding.
@@ -37,25 +25,6 @@ npx --package yo --package @microsoft/generator-sharepoint@latest -- yo @microso
 ## Install dependencies
 
 From the generated project directory, run `npm install --silent --no-fund --no-audit`.
-
-## Trust the developer certificate
-
-Required once per machine for the local workbench. Use the command for the project's toolchain (see [toolchain.md](./toolchain.md)):
-
-- Heft (v1.22+): `npx heft trust-dev-cert`
-- gulp (≤ v1.21.1): `npx gulp trust-dev-cert`
-
-If it fails on a locked-down machine, tell the user to trust the certificate manually — do not skip silently.
-
-## Validate the scaffold
-
-Confirm a clean build before handing back:
-
-```
-npm run build
-```
-
-Resolve any errors. To debug interactively, tell the user to run `npx heft start` (v1.22+) or `npx gulp serve` (legacy) to open the local workbench. Web parts that call SharePoint data need the hosted workbench at `https://<tenant>.sharepoint.com/_layouts/15/workbench.aspx`.
 
 ## Data access
 
