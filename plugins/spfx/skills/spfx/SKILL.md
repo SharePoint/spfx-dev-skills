@@ -16,6 +16,7 @@ Pick the reference(s) that match the user's intent. Load **only** what is needed
 ## Global rules (apply to every SPFx task)
 
 - **Use PnPjs by default for all SharePoint and Microsoft Graph data operations.** See [pnpjs.md](./references/pnpjs.md). Only fall back to raw `SPHttpClient`/`MSGraphClientV3` when the user explicitly requires it or a dependency cannot be added.
+- **When running `npm install`, always run it synchronously with a timeout of at least 3 minutes.** SPFx projects have heavy dependency trees.
 
 ## Toolchain decision rule
 
