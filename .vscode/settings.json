@@ -1,0 +1,66 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  // Configure glob patterns for excluding files and folders in the file explorer.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/jest-output": true,
+    "**/lib-amd": true,
+    "src/**/*.scss.ts": true
+  },
+  // Use the project's local TypeScript version.
+  "js/ts.tsdk.path": ".\\node_modules\\typescript\\lib",
+  "cSpell.words": [
+    "autoevaluation",
+    "Carto",
+    "Categorie",
+    "datatable",
+    "facepile",
+    "Facepile",
+    "fluentui",
+    "Gridlines",
+    "Maitrise",
+    "maximizable",
+    "odata",
+    "Perimetre",
+    "pnpjs",
+    "Ponderation",
+    "Ponderee",
+    "primeflex",
+    "primeicons",
+    "primereact",
+    "Reponse",
+    "sharepoint",
+    "spfi",
+    "SPFI",
+    "spfx",
+    "Supercollecteur",
+    "Synthese",
+    "userphoto",
+    "vinci",
+    "webpart"
+  ],
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  // Use the built-in JavaScript and TypeScript formatter.
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // Configure the SPFx toolkit extension
+  "spfx-toolkit.nodeVersionManager": "nvs",
+  "spfx-toolkit.createNodeVersionFileDefaultValue": true,
+  // Keep local git metadata up to date in the background.
+  "git.autofetch": true,
+  "git.autofetchPeriod": 300,
+  "git.pruneOnFetch": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".github/instructions/git-commit.instructions.md"
+    }
+  ]
+}
