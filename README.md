@@ -16,6 +16,7 @@ plugins/spfx/skills/spfx/
   references/
     create.md               Scaffold web parts & extensions (Yeoman, Heft by default)
     upgrade.md              Version upgrades (CLI for Microsoft 365) + gulp → Heft migration
+    node-manager.md         Node manager detection/switching for SPFx-compatible Node versions
     react-design.md         Fluent UI v9 UI contract — theming, accessibility, host-aware layout
     toolchain.md            Heft (v1.22+) vs gulp (≤ v1.21.1) commands and decision rule
     pnpjs.md                PnPjs as the default data layer for SharePoint & Microsoft Graph
@@ -27,6 +28,7 @@ plugins/spfx/skills/spfx/
 | --- | --- | --- |
 | **Create** | Scaffold a new web part, extension, library, or ACE | [create.md](./plugins/spfx/skills/spfx/references/create.md) |
 | **Upgrade** | Move a project to a newer SPFx version | [upgrade.md](./plugins/spfx/skills/spfx/references/upgrade.md) |
+| **Node Manager** | Detect/switch Node manager and align Node version for SPFx | [node-manager.md](./plugins/spfx/skills/spfx/references/node-manager.md) |
 | **React Design** | Build or change UI with Fluent UI v9 | [react-design.md](./plugins/spfx/skills/spfx/references/react-design.md) |
 | **Toolchain** | Pick the right build/serve/package commands | [toolchain.md](./plugins/spfx/skills/spfx/references/toolchain.md) |
 | **PnPjs Data** | Read or write SharePoint / Microsoft Graph data | [pnpjs.md](./plugins/spfx/skills/spfx/references/pnpjs.md) |

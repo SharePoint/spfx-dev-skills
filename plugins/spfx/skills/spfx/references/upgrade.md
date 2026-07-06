@@ -12,7 +12,7 @@ npm install -g @pnp/cli-microsoft365@latest --silent --no-fund --no-audit
 
 1. **Ensure a clean, committed git state.** The upgrade rewrites many files; the user needs a clean baseline to review the diff and roll back. If the working tree is dirty, ask the user to commit or stash first.
 2. **Detect the current version.** Read `.yo-rc.json` (`@microsoft/generator-sharepoint.version`) and the `@microsoft/sp-*` versions in `package.json`. State the current and target versions before running anything.
-3. **Check Node/TypeScript compatibility for the target version.** Each SPFx version supports specific Node ranges. If the installed Node is outside the target's range the build will fail — surface this up front (use `m365 spfx doctor` if unsure).
+3. **Check Node/TypeScript compatibility for the target version.** Each SPFx version supports specific Node ranges. If the installed Node is outside the target's range the build will fail — surface this up front (use `m365 spfx doctor` if unsure). For manager detection and switching commands, see [node-manager.md](./node-manager.md).
 
 ## Run the upgrade
 
