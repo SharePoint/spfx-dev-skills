@@ -12,14 +12,18 @@ A single, focused skill — **`spfx`** — that routes an agent to the right pla
 
 ```
 plugins/spfx/skills/spfx/
-  SKILL.md                  Router + global rules + the Heft/gulp toolchain decision rule
-  references/
-    create.md               Scaffold web parts & extensions (Yeoman, Heft by default)
-    upgrade.md              Version upgrades (CLI for Microsoft 365) + gulp → Heft migration
-    node-manager.md         Node manager detection/switching for SPFx-compatible Node versions
-    react-design.md         Fluent UI v9 UI contract — theming, accessibility, host-aware layout
-    toolchain.md            Heft (v1.22+) vs gulp (≤ v1.21.1) commands and decision rule
-    pnpjs.md                PnPjs as the default data layer for SharePoint & Microsoft Graph
+   SKILL.md                               Router + global rules + the Heft/gulp toolchain decision rule
+   references/
+      create.md                           Scaffold web parts & extensions (Yeoman, Heft by default)
+      upgrade.md                          Version upgrades (CLI for Microsoft 365) + gulp → Heft migration
+      node-manager.md                     Node manager detection/switching + compatibility matrix checks
+      react-design.md                     Fluent UI v9 UI contract — theming, accessibility, host-aware layout
+      toolchain.md                        Heft (v1.22+) vs gulp (≤ v1.21.1) commands and decision rule
+      pnpjs.md                            PnPjs as the default data layer for SharePoint & Microsoft Graph
+   scripts/
+      detect-node-manager.ps1             Deterministic node manager detection (nvm, nvs, fnm, volta)
+      check-spfx-node-compatibility.ps1   SPFx compatibility matrix check + recommended Node install/switch
+      cleanup-dependencies.ps1            Removes node_modules, lock file(s), and build output before reinstalling
 ```
 
 ### The skill: `spfx`
