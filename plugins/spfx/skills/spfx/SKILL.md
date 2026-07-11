@@ -1,13 +1,14 @@
 ---
 name: spfx
-description: 'SharePoint Framework (SPFx) development. Use when: "create SPFx project", "new web part", "SPFx extension", "upgrade SPFx", "SPFx upgrade", "update SPFx version", "scaffold SPFx", "SPFx React", "SPFx design", "web part styling", "Fluent UI in SPFx", "SPFx Heft", "gulp to Heft", "PnPjs", "read SharePoint list", "call Microsoft Graph from SPFx". Covers project creation (Yeoman), upgrades (CLI for Microsoft 365), the Heft/gulp toolchain, React web part design, and PnPjs data access.'
-argument-hint: 'Describe what you need: create, upgrade, design, or data access'
+description: 'SharePoint Framework (SPFx) development. Use when: "create SPFx project", "new web part", "SPFx extension", "upgrade SPFx", "SPFx upgrade", "update SPFx version", "scaffold SPFx", "SPFx React", "SPFx design", "web part styling", "Fluent UI in SPFx", "SPFx Heft", "gulp to Heft", "PnPjs", "read SharePoint list", "call Microsoft Graph from SPFx", "set up SPFx", "SPFx environment", "SPFx prerequisites", "SPFx install Node", "SPFx nvm". Covers project creation (Yeoman), upgrades (CLI for Microsoft 365), the Heft/gulp toolchain, React web part design, PnPjs data access, and environment setup/validation.'
+argument-hint: 'Describe what you need: create, upgrade, setup, design, or data access'
 ---
 
 # SPFx Development
 
 Pick the reference(s) that match the user's intent. Load **only** what is needed and execute the steps exactly:
 
+- **Set up a development environment or validate prerequisites** → [setup.md](./references/setup.md)
 - **Create a project** → [create.md](./references/create.md)
 - **Upgrade a project** → [upgrade.md](./references/upgrade.md)
 - **Working on UI in a React SPFx project** (components, styling, layout, accessibility) → [react-design.md](./references/react-design.md)
