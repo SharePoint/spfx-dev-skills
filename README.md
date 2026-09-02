@@ -10,14 +10,13 @@ Agent skills for building **SharePoint Framework (SPFx)** solutions — scaffold
 
 A single, focused skill — **`spfx`** — that routes an agent to the right playbook based on what you ask. Each reference is a self-contained, agent-ready guide.
 
-```
+```text
 plugins/spfx/skills/spfx/
   SKILL.md                  Router + global rules + the Heft/gulp toolchain decision rule
   references/
     create.md               Scaffold web parts & extensions (Yeoman, Heft by default)
     upgrade.md              Version upgrades (CLI for Microsoft 365) + gulp → Heft migration
     react-design.md         Fluent UI v9 UI contract — theming, accessibility, host-aware layout
-    toolchain.md            Heft (v1.22+) vs gulp (≤ v1.21.1) commands and decision rule
     pnpjs.md                PnPjs as the default data layer for SharePoint & Microsoft Graph
 ```
 
@@ -28,12 +27,14 @@ plugins/spfx/skills/spfx/
 | **Create** | Scaffold a new web part, extension, library, or ACE | [create.md](./plugins/spfx/skills/spfx/references/create.md) |
 | **Upgrade** | Move a project to a newer SPFx version | [upgrade.md](./plugins/spfx/skills/spfx/references/upgrade.md) |
 | **React Design** | Build or change UI with Fluent UI v9 | [react-design.md](./plugins/spfx/skills/spfx/references/react-design.md) |
-| **Toolchain** | Pick the right build/serve/package commands | [toolchain.md](./plugins/spfx/skills/spfx/references/toolchain.md) |
+| **Toolchain** | Pick Heft (v1.22+) or gulp (≤ v1.21.1) | [SKILL.md](./plugins/spfx/skills/spfx/SKILL.md#toolchain-decision-rule) |
 | **PnPjs Data** | Read or write SharePoint / Microsoft Graph data | [pnpjs.md](./plugins/spfx/skills/spfx/references/pnpjs.md) |
 
 ### Why these skills?
 
 SPFx development covers a lot of ground — the Yeoman generator, the toolchain switch from gulp to **Heft** at v1.22, Fluent UI theming, accessibility, and data access against SharePoint and Microsoft Graph. AI agents working from generic web context tend to mix toolchain versions, run interactive prompts that hang in a terminal, invent package versions, or stop before validating a build. This skill keeps the agent in the SPFx lane end-to-end: it **detects the installed version**, **picks the correct toolchain**, **uses non-interactive commands**, defaults to **PnPjs** for data, and **validates with a clean build** before calling a task done.
+
+The guidance is informed by repeated evaluation of an SPFx 1.21.1-to-1.22.2 upgrade scenario. Read [Behind SPFx Dev Skills: testing what agents know and fixing what they miss](https://devblogs.microsoft.com/microsoft365dev/behind-spfx-dev-skills-testing-what-agents-know-and-fixing-what-they-miss/) for the baseline, scoring, and resulting changes to the skill, SPFx documentation, and agent content retrieval.
 
 ## Use cases
 
@@ -47,11 +48,13 @@ SPFx development covers a lot of ground — the Yeoman generator, the toolchain 
 
 These references follow the portable **skill** convention — a folder with a `SKILL.md` and supporting Markdown that any compatible AI coding agent can load. There are two ways to get the `spfx` skill into your environment.
 
+For the published installation and usage guidance, see [Use the SPFx development skill with AI coding agents](https://learn.microsoft.com/sharepoint/dev/spfx/agent-skills) in the SharePoint developer documentation.
+
 ### Option A — Skills CLI (recommended)
 
 A Skills CLI lets you install and manage skills across environments from one command.
 
-```
+```console
 # Placeholder — distribution via a Skills CLI is being finalized.
 # Once published, installing will be a single command, e.g.:
 #   skills install spfx --from SharePoint/spfx-dev-skills
@@ -62,13 +65,17 @@ A Skills CLI lets you install and manage skills across environments from one com
 ### Option B — Manual install
 
 1. Clone this repository:
-   ```
+
+   ```console
    git clone https://github.com/SharePoint/spfx-dev-skills.git
    ```
+
 2. Copy the skill folder into your agent's skills directory:
-   ```
+
+   ```text
    plugins/spfx/skills/spfx/   →   <your-agent-skills-directory>/spfx/
    ```
+
    (Common locations: a `.github/skills/` or `skills/` folder in your workspace, or your agent's global skills directory — check your agent's docs.)
 3. Start a new agent session and ask for an SPFx task. The agent loads the matching reference automatically — for example:
    > "Create an SPFx React web part called HelloWorld."
