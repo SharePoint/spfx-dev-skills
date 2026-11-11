@@ -44,21 +44,25 @@ The skill lives under `plugins/spfx/skills/spfx/`:
 
 When editing references, please keep these in mind:
 
-- **Be version-accurate.** SPFx uses **Heft** for v1.22+ and **gulp** for v1.21.1 and earlier. Don't mix them. Cite the correct commands for the relevant toolchain (see [toolchain.md](./plugins/spfx/skills/spfx/references/toolchain.md)).
+- **Be version-accurate.** Target SPFx **1.24.1**, React **18.3.1** and recommended Node **26 LTS** unless another supported target is requested. Reuse [setup.md](./plugins/spfx/skills/spfx/references/setup.md) for environment checks; preserve older/SharePoint Server targets and supported existing Node pins. Heft is required for supported 1.24 builds; existing 1.22/1.23 projects may retain gulp. Inspect the actual configuration (see the [toolchain decision](./plugins/spfx/skills/spfx/SKILL.md#toolchain-decision-rule)).
 - **Never invent versions, flags, or APIs.** If a flag or command isn't certain, instruct the agent to discover it (e.g. `--help`) rather than guessing.
 - **Prefer non-interactive commands.** Explicit flags only — no reliance on arrow-key prompts.
-- **Keep PnPjs the default** for SharePoint and Microsoft Graph data operations.
+- **Prefer PnPjs** for ordinary SharePoint/Graph work; preserve the documented brokered-client exception for [Copilot UX components](./plugins/spfx/skills/spfx/references/copilot.md).
+- **Require Fluent UI v9 wherever possible.** The Copilot React template includes v9; use it for new/changed UI even when a web-part scaffold starts with v8. Verify peers and document necessary fallbacks; do not force incompatible dependencies. In iframe hosts, validate both Fluent and Griffel document ownership.
 - **End with validation.** Guidance should drive toward a clean `npm run build` before a task is considered done.
-- **Cross-link** related references instead of duplicating content.
+- **Cross-link** related references instead of duplicating content; keep the router short and detailed guidance on demand.
 - Use clear Markdown: short sections, tables for command mappings, fenced code blocks for commands.
 
 ## Validating your changes
 
 There is no build step for the skill content itself. Before opening a PR:
 
-- Re-read the affected reference end-to-end and confirm every command matches the toolchain it claims to target.
+- Confirm commands/options against the exact target generator/tool, cite sources and record the verification date. Published CLI coverage can lag SPFx GA.
+- Check release-coupled runtime, rig, plugin and lint packages and lockfile resolutions, not just generator metadata. SPFx 1.24.0 scaffolds can retain `1.24.0-rc.0` references; the 1.24.1 baseline must not.
 - Check that cross-links resolve to existing files.
 - If you changed `SKILL.md`, confirm the front-matter `description` still reflects what the skill covers.
+- For behavioral examples, record exact versions, commands/results and actual host checks; identify blocked validation rather than claiming success.
+- If visual claims change, update [infographic.html](./assets/infographic.html) and regenerate its 1280x720 [PNG](./assets/infographic.png) together; inspect the rendered result for clipping.
 
 ## Code of conduct
 
