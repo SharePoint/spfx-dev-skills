@@ -16,13 +16,6 @@ Recommend the latest Node **26.x LTS** patch for a new environment; supported ex
 
 For earlier SPFx releases, use their own row in the [compatibility reference](https://learn.microsoft.com/sharepoint/dev/spfx/compatibility). SharePoint Server ceilings are **1.1** for 2016 FP2, **1.4.1** for 2019 and **1.5** for Subscription Edition; they do not support the 1.24.1/Node 26 baseline. An upgrade may require different Node versions for its source and target; build the source first as described in [upgrade.md](./upgrade.md).
 
-## Inspect and select Node in the actual build shell
-
-1. Detect OS/shell and run `node --version` and `npm --version`. Inspect existing `.nvmrc`, `.node-version`, `package.json` engines/Volta settings and CI configuration. Resolve conflicting requirements explicitly rather than ignoring pins.
-2. Discover installed managers and versions: fnm, nvm-windows, Unix nvm, NVS or Volta. Use the detected manager's documented commands; Unix nvm is a shell function, not nvm-windows. Prefer a compatible installed version, including installed-but-inactive versions.
-3. If switching is needed, activate the selected version in the shell that will install and build. Shell initialization, PATH and environment changes may not persist between terminal/tool calls; initialize/select again when needed. Confirm before installing a runtime/manager or changing global tools. Do not replace the user's manager or create a version pin unconditionally.
-4. Re-run `node --version` and `npm --version` **in the build shell**. For an intentional move to Node 26, update existing runtime pins and CI together while preserving the full supported `engines.node` range where appropriate.
-5. Recheck global tools after switching; different Node installations can have separate global packages. If a compatible environment cannot be selected, stop and report the exact blocker.
 
 ## Verify and install only missing or mismatched tools
 

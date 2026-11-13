@@ -2,7 +2,7 @@
 name: spfx
 description: 'SharePoint Framework (SPFx) development. Use when: "create SPFx project", "new web part", "SPFx extension", "upgrade SPFx", "SPFx upgrade", "update SPFx version", "scaffold SPFx", "SPFx React", "SPFx design", "web part styling", "Fluent UI in SPFx", "SPFx Heft", "gulp to Heft", "PnPjs", "read SharePoint list", "call Microsoft Graph from SPFx", "Copilot UX component", "SharePoint Copilot App". Covers project creation, upgrades, the Heft/gulp toolchain, React design, PnPjs, and SPFx components hosted in Microsoft 365 Copilot.'
 argument-hint: 'Describe what you need: create, upgrade, design, data access, or a Copilot UX component'
-version: 1.1.0
+version: 1.1.1
 ---
 
 # SPFx Development
