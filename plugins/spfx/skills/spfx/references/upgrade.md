@@ -29,7 +29,10 @@ From the SPFx project root, run CLI for Microsoft 365:
 
 ## Apply the upgrade
 
-Read the generated report and apply **all** steps in the order listed. The report contains file modifications, package version changes, and configuration updates. Apply them sequentially — order matters. If a step targets a customized file, merge carefully rather than overwriting custom logic.
+Read the **entire** generated report and apply **all** steps in the order listed. The report is long, so if you read it in parts, keep reading until you reach the end of its final `## Summary` section; don't decide how much to read from a line count. The report contains file modifications, package version changes, and configuration updates. Apply them sequentially — order matters. If a step targets a customized file, merge carefully rather than overwriting custom logic.
+
+- Migrate retained gulp customizations to **Heft** for supported 1.24 builds using the [official migration guide](https://learn.microsoft.com/sharepoint/dev/spfx/toolchain/migrate-gulptoolchain-hefttoolchain). Check whether the CLI report includes this migration; version edits alone are insufficient.
+- Follow the [React 18 migration guide](https://learn.microsoft.com/sharepoint/dev/spfx/react-18-upgrade): exact `react` / `react-dom` **18.3.1**, compatible React 18 types, configuration/externals and dependency overrides. Replace owned legacy mounts with one reusable `createRoot` per container and matching unmount/disposal across web parts, extensions/placeholders/cells, dialogs, property controls, tests and Copilot `onTeardown`. Check explicit `children`, batching and effect cleanup; do not add React to non-React solutions.
 
 ## Verify
 

@@ -1,155 +1,79 @@
-# React SPFx Design Guidelines — Copilot UI Contract v2.1
+# React SPFx Design Guidelines
 
-(Fluent UI v9 + SharePoint + Host Awareness)
+**MUST use Fluent UI v9 wherever compatible components are available** for new/changed React + TypeScript UI. This applies to a single control, a composite or a full page; do not turn every request into an app shell. For Copilot lifecycle and bridge operations, load [copilot.md](./copilot.md).
 
-Normative guidance for generating UI consistent with Fluent UI v9, aligned to SharePoint experiences, and adaptable across host environments.
+The default target is **SPFx 1.24.1 / React 18.3.1**; follow [setup.md](./setup.md) for Node/tool prerequisites. Preserve an explicitly older target's React contract rather than upgrading React independently.
 
-## 1. Scope
+## Packages and composition
 
-Applies to UI generated as:
+- Use `@fluentui/react-components`, compatible `@fluentui/react-icons`, `makeStyles` and tokens. Compose existing primitives and anatomy (`Card`, `CardHeader`, `Button`, `Text`) before custom UI.
+- The 1.24 Copilot React template includes v9; ordinary React web parts still scaffold v8. That dependency is not a reason to choose v8 for new UI. Do not mix v8/v9 APIs or add a second React runtime.
+- Inspect declared and resolved packages; verify React/types peers for the selected v9 release before installing. Do not force peers or copy sample resolutions/overrides. Keep existing compatible dependencies unless a change is needed.
+- Use v8 or semantic HTML only for an unavailable/incompatible v9 equivalent, and explain the constraint. Untouched v8 UI need not be rewritten. Keep output minimal and implementation-ready.
 
-- primitive (button, input, badge)
-- composite (toolbar, card, feed item)
-- assembly (feed, dashboard section, form)
-- template (full page or multi-region flow)
+## Theme comes from the actual host
 
-Agents MUST NOT assume all requests are full-page experiences.
+Accessibility/legibility takes precedence over host integration, then brand expression. Pass the current theme through props/context and update it when the host changes.
 
-## 2. Platform
+| Host | Theme model |
+| --- | --- |
+| SharePoint web part | Observe the SPFx theme through the existing theme lifecycle. Map its palette/semantic colors into v9 tokens; a v8/SPFx theme is not a v9 `Theme` and must not be cast to one. Generic light/dark themes do not reproduce site branding. |
+| Copilot UX component | Read the latest optional `hostContext.theme`: `dark` -> `webDarkTheme`, otherwise `webLightTheme`. The host supplies no SharePoint palette or v9 design tokens. |
+| Other declared host | Use its documented theme adapter. Use Fluent defaults only when the host supplies no theme. |
 
-Generated UI MUST use:
+Use Fluent theme tokens for foregrounds, surfaces, borders, spacing and typography, not hardcoded color systems. Preserve existing host integration for a justified v8 fallback. Validate contrast and forced-colors behavior rather than assuming a dark theme covers them.
 
-- React
-- TypeScript
-- SPFx-compatible patterns
-- @fluentui/react-components
-- @fluentui/react-icons
+## Provider and document ownership
 
-Agents MUST NOT recreate Fluent components using custom HTML/CSS.
+For Copilot/other-document hosts, pass the container's `ownerDocument` to both Griffel and Fluent; parent-document styles do not style an iframe. This boundary uses exports from `@fluentui/react-components`:
 
-MUST verify the Fluent UI version against the project's `package.json` before importing. Match the version aligned to the installed SPFx; do not assume a version the project does not declare.
+```tsx
+import * as React from 'react';
+import {
+  createDOMRenderer, FluentProvider, RendererProvider, type Theme
+} from '@fluentui/react-components';
 
-## 3. Core Rules
+export function FluentBoundary(props: {
+  targetDocument: Document;
+  theme: Theme;
+  children: React.ReactNode;
+}): React.ReactElement {
+  const renderer = React.useMemo(
+    () => createDOMRenderer(props.targetDocument),
+    [props.targetDocument]
+  );
+  return (
+    <RendererProvider renderer={renderer} targetDocument={props.targetDocument}>
+      <FluentProvider theme={props.theme} targetDocument={props.targetDocument}>
+        {props.children}
+      </FluentProvider>
+    </RendererProvider>
+  );
+}
+```
 
-- MUST use Fluent UI v9 components when available
-- MUST compose from Fluent primitives before custom UI
-- MUST produce accessible, responsive output
-- SHOULD keep output minimal and implementation-ready
-- MAY add small custom styling when required
+Define `makeStyles` factories at module scope, but call the resulting hooks in **children inside** this boundary. A hook in the function that returns the provider still uses the outer renderer. Keep portal/overlay styles and focus in the same document. If using `IdPrefixProvider`, choose a stable per-instance prefix, not one shared by independent roots.
 
-## 4. Theme and Host Precedence
+For React 18 targets, retain one root per container; host/theme changes re-render that root rather than remount it. Unmount and clear it on web-part disposal or Copilot `onTeardown`, and remove observers/listeners. Older supported targets retain their compatible rendering APIs until the framework is upgraded.
 
-Apply in order:
+## Layout and interaction
 
-1. Accessibility and legibility
-2. Host surface integration
-3. SharePoint alignment
-4. Brand expression via tokens
+- Inline/conversational: one focused, scannable column. Embedded/web-part: constrained fluid width, compact spacing/elevation, no full-screen assumptions. Fullscreen/full-page may add regions, but must stack when narrow.
+- Use CSS grid/flex, `minWidth: 0` and container-aware layout instead of fixed demo dimensions or viewport-only breakpoints. Measure the container when host dimensions are absent; clean up `ResizeObserver`. Keep selection/form state above mode-specific views.
+- Use consistent icon variants and hover/active/focus states. Do not hide essential actions behind hover. Avoid dense toolbars, excessive nesting and heavy components without a scenario need.
+- Use semantic headings, visible focus, accessible names (including icon-only buttons), logical tab order and managed/restored overlay focus. Status must have text, not color alone.
+- Localize labels/errors and format dates, numbers and currency with the user's locale; honor RTL layout. Keep units and totals' scope explicit.
 
-- MUST inherit theme, colors, typography from host
-- MUST NOT hardcode colors or surfaces
-- SHOULD use neutral, adaptive surfaces
+## Data and feedback
 
-## 5. Theme Application
+Keep data in typed services/hooks, not render. Prefer [PnPjs](./pnpjs.md) for ordinary SharePoint/Graph work; preserve its [Copilot brokered-client exception](./copilot.md#data-access).
 
-Generated UI MUST demonstrate theme integration.
+Expose loading, empty, error and mutation-pending states with appropriate announcements and retry actions. Ignore stale requests and never make failures look like successful placeholder data. For Copilot, publish context matching these visible states; follow [the context and 10 KB guidance](./copilot.md#keep-copilot-informed-about-the-rendered-view).
 
-- MUST use FluentProvider when theming is relevant
-- MUST use theme-aware tokens (no fixed colors)
-- SHOULD accept theme via props or context
-- MUST fallback to Fluent defaults when no host theme exists
+## Validation
 
-## 6. SharePoint Alignment
+Run the project's `npm run build` and resolve errors; see the [toolchain decision](../SKILL.md#toolchain-decision-rule). Test each declared host with light/dark/branded/forced-colors themes, narrow containers (including approximately 320 CSS pixels for inline UI), zoom, localized/RTL text, keyboard/focus, portals, multiple instances and disposal/reopen. Verify state survives host/theme/mode rerenders. A build or sample render alone is not host certification; report blocked checks.
 
-- MUST respect SharePoint themes when present
-- MUST adapt to zones, columns, dynamic width
-- SHOULD use patterns: cards, lists, panels, sections
-- MUST NOT assume app-shell layout unless specified
+Source: [GA Copilot theme/design guidance](https://github.com/VesaJuvonen/sp-dev-docs/blob/af6397f04c3132eb7c4a67cdd8ff72b8ad8f013e/docs/spfx/copilot/theme-and-design.md), cross-checked against the published 1.24.0 template and supplied GA samples on **2026-10-28**.
 
-## 7. Container Context Rules
-
-Agents MUST infer context.
-
-### Inline / Conversational
-
-- MUST use single-column layout
-- MUST prioritize scannability
-- MUST NOT rely on hover-only interactions
-- SHOULD avoid dense toolbars/forms
-
-### Embedded / Web Part
-
-- MUST assume constrained width
-- MUST use compact density
-- MUST minimize padding and elevation
-- SHOULD favor vertical layouts
-- MUST resize cleanly across zones
-
-### Full Page
-
-- MAY use multi-column layouts
-- MAY introduce stronger hierarchy
-
-## 8. Component Composition Rules
-
-- MUST use Fluent subcomponents (e.g. CardHeader)
-- MUST NOT recreate component anatomy manually
-- MUST use proper Text hierarchy (size/weight)
-- MUST avoid arbitrary spacing
-
-## 9. Interaction Consistency
-
-- MUST use consistent interaction states (hover/active/focus)
-- SHOULD use appropriate icon variants (filled vs regular)
-- MUST NOT mix inconsistent icon styles
-
-## 10. Accessibility
-
-- MUST use semantic structure
-- MUST support keyboard navigation
-- MUST include labels/accessible names
-- MUST preserve tab order
-- MUST manage focus for overlays
-- MUST expose loading/empty/error states
-
-## 11. Performance
-
-- SHOULD favor lightweight composition
-- SHOULD avoid excessive nesting
-- SHOULD avoid heavy components unless justified
-
-## 12. Styling
-
-- MUST prefer Fluent defaults
-- MUST NOT assume fixed widths
-- MUST maintain readability in narrow views
-- SHOULD use theme tokens
-
-## 13. Anti-Patterns
-
-Agents MUST NOT:
-
-- recreate Fluent components manually
-- assume full-screen layouts in embedded contexts
-- use custom color systems
-- overuse elevation
-- create dense multi-column layouts in narrow spaces
-- rely on hover-only affordances
-
-## 14. Output
-
-Generated output MUST be:
-
-- React + TypeScript
-- Fluent UI v9-based
-- readable and implementation-ready
-
-## 15. Data Access
-
-- MUST use **PnPjs by default** for any SharePoint or Microsoft Graph data — see [pnpjs.md](./pnpjs.md).
-- MUST keep data calls in a service or hook, never inside render.
-- MUST expose loading, empty, and error states for all async data.
-
-## 16. Validation
-
-After UI changes, MUST run `npm run build` and resolve all errors, then smoke-test in the workbench (`heft start` on SPFx v1.22+, `gulp serve` on legacy — see [toolchain.md](./toolchain.md)).
+The published **1.24.1** generator dependency groups were checked on **2026-11-11**: React remains 18.3.1, the Copilot React template includes Fluent UI v9, and standard React web parts still include v8. This dependency check does not replace host validation.
