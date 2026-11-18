@@ -1,0 +1,382 @@
+{
+  "schemaVersion": "1.0",
+  "extension": {
+    "type": "skill",
+    "name": "spfx",
+    "version": "1.1.2",
+    "scope": "Create, upgrade and design SharePoint Framework (SPFx) apps.",
+    "digest": "sha256:f867add6730ccac514d57815cab0caaa20d3411b8b165e9848c36b07464081af"
+  },
+  "eval": {
+    "suite": "scope:benchmarks/6afae02f3a562c0d1e5d2719",
+    "sha": "54c28ee82651004725cca7e0c8e1f8b5e7484a69fdd564174d2223d0609822cb",
+    "date": "2026-11-17",
+    "runsPerRow": 5,
+    "evidence": [
+      {
+        "task": "T1",
+        "uri": "readout.json",
+        "sha256": "34a0b7576672c499c09712827e6dd2018dc3249c3105857f31584b75d8052da6"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Upgrade SPFx web part from v1.23.2 to v1.24.1",
+      "criteria": 17,
+      "profiles": [
+        {
+          "harness": {
+            "name": "Copilot Chat",
+            "version": "0.73.0"
+          },
+          "model": "claude-sonnet-5.5",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": true,
+              "score": {
+                "mean": 47.06,
+                "min": 41.18,
+                "max": 58.82
+              },
+              "usage": {
+                "tokens": 1591204,
+                "usd": 0.4922
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 94.12,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 326780,
+                "usd": 0.2307
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 816051,
+                "usd": 0.3992
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Copilot Chat",
+            "version": "0.73.0"
+          },
+          "model": "claude-opus-5.5",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 88.24,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 1667504,
+                "usd": 1.2406
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 88.24,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 753552,
+                "usd": 0.6671
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 976575,
+                "usd": 0.8153
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Copilot Chat",
+            "version": "0.73.0"
+          },
+          "model": "gpt-6-luna",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 27.06,
+                "min": 23.53,
+                "max": 41.18
+              },
+              "usage": {
+                "tokens": 2008589,
+                "usd": 0.0319
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 92.94,
+                "min": 88.24,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 1544056,
+                "usd": 0.0287
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 1207716,
+                "usd": 0.0251
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Copilot Chat",
+            "version": "0.73.0"
+          },
+          "model": "gpt-6.1-terra",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 58.82,
+                "min": 47.06,
+                "max": 70.59
+              },
+              "usage": {
+                "tokens": 4118982,
+                "usd": 0.3319
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 92.94,
+                "min": 88.24,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 448133,
+                "usd": 0.0738
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 97.65,
+                "min": 94.12,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 2127391,
+                "usd": 0.2261
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Copilot Chat",
+            "version": "0.73.0"
+          },
+          "model": "copilot-fusion",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 31.76,
+                "min": 23.53,
+                "max": 47.06
+              },
+              "usage": {
+                "tokens": 364194,
+                "usd": 0.0086
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 94.12,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 471306,
+                "usd": 0.0105
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 826407,
+                "usd": 0.0174
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Claude Code",
+            "version": "2.1.322"
+          },
+          "model": "claude-sonnet-5-5",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 41.18,
+                "min": 41.18,
+                "max": 41.18
+              },
+              "usage": {
+                "tokens": 122667,
+                "usd": 0.0697
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 94.12,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 207674,
+                "usd": 0.1134
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 358605,
+                "usd": 0.1596
+              }
+            }
+          ]
+        },
+        {
+          "harness": {
+            "name": "Claude Code",
+            "version": "2.1.322"
+          },
+          "model": "claude-opus-5-5",
+          "reasoningEffort": "default",
+          "platform": "Windows",
+          "rows": [
+            {
+              "configuration": "no extensions",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 94.12,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 241191,
+                "usd": 0.2473
+              }
+            },
+            {
+              "configuration": "spfx 1.0",
+              "baseline": false,
+              "score": {
+                "mean": 94.12,
+                "min": 94.12,
+                "max": 94.12
+              },
+              "usage": {
+                "tokens": 262986,
+                "usd": 0.2507
+              }
+            },
+            {
+              "configuration": "spfx 1.1.2",
+              "baseline": false,
+              "score": {
+                "mean": 100.0,
+                "min": 100.0,
+                "max": 100.0
+              },
+              "usage": {
+                "tokens": 330643,
+                "usd": 0.3218
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
