@@ -1,0 +1,53 @@
+┌──────────────────────────────────────────────────────────────────────────┐
+│ EXTENSION PERFORMANCE FACTS                                EPF-1 · REV A │
+├──────────────────────────────────────────────────────────────────────────┤
+│ EXTENSION  spfx 1.1.2 · skill                                            │
+│ SCOPE      Create, upgrade and design SharePoint Framework (SPFx) apps.  │
+├──────────────────────────────────────────────────────────────────────────┤
+│ TASKS 1   PROFILES 7   RUNS/ROW 5   EVAL 2026-11-17                      │
+╞══════════════════════════════════════════════════════════════════════════╡
+│ CONFIGURATION          SCORE¹  RANGE     Δ²   DRAG│LIFT       TOK³  USD³ │
+├──────────────────────────────────────────────────────────────────────────┤
+│ T1  UPGRADE SPFX WEB PART FROM V1.23.2 TO V1.24.1            17 CRITERIA │
+│     Copilot Chat 0.73.0 · claude-sonnet-5.5 · default · Windows          │
+│     no extensions         47%  41–59   BASE       │           1.6M 0.492 │
+│     spfx 1.0              94%  94–94    +47       ┼█████████  327k 0.231 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 816k 0.399 │
+│                                                                          │
+│     Copilot Chat 0.73.0 · claude-opus-5.5 · default · Windows            │
+│     no extensions         94%  88–100   +47       ┼█████████  1.7M  1.24 │
+│     spfx 1.0              94%  88–100   +47       ┼█████████  754k 0.667 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 977k 0.815 │
+│                                                                          │
+│     Copilot Chat 0.73.0 · gpt-6-luna · default · Windows                 │
+│     no extensions         27%  24–41    -20   ░░░░┼           2.0M 0.032 │
+│     spfx 1.0              93%  88–94    +46       ┼█████████  1.5M 0.029 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 1.2M 0.025 │
+│                                                                          │
+│     Copilot Chat 0.73.0 · gpt-6.1-terra · default · Windows              │
+│     no extensions         59%  47–71    +12       ┼██         4.1M 0.332 │
+│     spfx 1.0              93%  88–94    +46       ┼█████████  448k 0.074 │
+│     spfx 1.1.2            98%  94–100   +51       ┼██████████ 2.1M 0.226 │
+│                                                                          │
+│     Copilot Chat 0.73.0 · copilot-fusion · default · Windows             │
+│     no extensions         32%  24–47    -15    ░░░┼           364k 0.009 │
+│     spfx 1.0              94%  94–94    +47       ┼█████████  471k 0.011 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 826k 0.017 │
+│                                                                          │
+│     Claude Code 2.1.322 · claude-sonnet-5-5 · default · Windows          │
+│     no extensions         41%  41–41     -6      ░┼           123k 0.070 │
+│     spfx 1.0              94%  94–94    +47       ┼█████████  208k 0.113 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 359k 0.160 │
+│                                                                          │
+│     Claude Code 2.1.322 · claude-opus-5-5 · default · Windows            │
+│     no extensions         94%  94–94    +47       ┼█████████  241k 0.247 │
+│     spfx 1.0              94%  94–94    +47       ┼█████████  263k 0.251 │
+│     spfx 1.1.2           100%  100–100  +53       ┼█████████► 331k 0.322 │
+╞══════════════════════════════════════════════════════════════════════════╡
+│ ¹ SCORE  mean criteria passed · RANGE min–max · n=5                      │
+│ ² Δ      mean score vs BASE · ░ drag ◄ ┼ ► lift █ · cell=5 pp            │
+│ ³ USAGE  mean per run · input + output + cache · USD list @ eval date    │
+│   SCOPE  task + profile specific · no transfer implied                   │
+├──────────────────────────────────────────────────────────────────────────┤
+│ EVAL  scope:benchmarks/6afae02f3a562c0d1e5d2719              SHA 54c28ee │
+└──────────────────────────────────────────────────────────────────────────┘
