@@ -1,4 +1,4 @@
-# SPFx Dev Skills evaluation results
+# SPFx Dev Skills evaluation results - November 18, 2026
 
 - **Test date:** November 18, 2026
 - **Skill version:** v1.1.2, compared with v1.0 and no skill
@@ -66,5 +66,3 @@ Reviewing the agents' action traces revealed that some generated an upgrade repo
 ## Source
 
 [Announcing SPFx Dev Skills for SPFx 1.24.1](https://devblogs.microsoft.com/microsoft365dev/?p=26499), Microsoft 365 Developer Blog, November 18, 2026.
-
-The results were reviewed from the supplied article preview. The public article link was not yet available when this page was added; preview access parameters are intentionally excluded.
