@@ -4,7 +4,7 @@ Agent skills for building **SharePoint Framework (SPFx)** solutions: scaffold, d
 
 ![SPFx Dev Skills: AI coding guidance for create, upgrade, React design, toolchain, PnPjs data and Copilot UX, with Copilot, SharePoint and Teams logos](./assets/infographic.png)
 
-> **Skill preview** - review generated code and commands before committing or deploying. The skill's preview status is separate from the stable **SPFx 1.24.1** release. Remaining release-readiness work is tracked in [todo.md](./todo.md).
+> **Skill preview** - review generated code and commands before committing or deploying. The skill's preview status is separate from the stable **SPFx 1.24.1** release.
 
 ## SPFx 1.24.1 baseline
 
@@ -83,7 +83,7 @@ The skill does not replace the required Node/toolchain or tenant access. A clean
 
 ## Roadmap and feedback
 
-Remaining technical updates are tracked in [todo.md](./todo.md). Verified Skills CLI and plugin/marketplace distribution remain future work.
+Verified Skills CLI and plugin/marketplace distribution remain future work.
 
 [Report an issue](https://github.com/SharePoint/spfx-dev-skills/issues) with your prompt, project versions, expected/actual result and validation output. Contributions follow **fork -> branch -> PR to `main`**; see [CONTRIBUTING.md](./CONTRIBUTING.md). Do not include credentials or tenant-sensitive data.
 
