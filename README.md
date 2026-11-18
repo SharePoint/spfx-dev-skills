@@ -2,7 +2,7 @@
 
 Agent skills for building **SharePoint Framework (SPFx)** solutions: scaffold, design, build, upgrade, and ship from your AI coding agent.
 
-![SPFx Dev Skills: create, upgrade, React design, toolchain, data and Copilot UX components](./assets/infographic.png)
+![SPFx Dev Skills: AI coding guidance for create, upgrade, React design, toolchain, PnPjs data and Copilot UX, with Copilot, SharePoint and Teams logos](./assets/infographic.png)
 
 > **Skill preview** - review generated code and commands before committing or deploying. The skill's preview status is separate from the stable **SPFx 1.24.1** release. Remaining release-readiness work is tracked in [todo.md](./todo.md).
 

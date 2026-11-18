@@ -63,6 +63,7 @@ There is no build step for the skill content itself. Before opening a PR:
 - If you changed `SKILL.md`, confirm the front-matter `description` still reflects what the skill covers.
 - For behavioral examples, record exact versions, commands/results and actual host checks; identify blocked validation rather than claiming success.
 - If visual claims change, update [infographic.html](./assets/infographic.html) and regenerate its 1280x720 [PNG](./assets/infographic.png) together; inspect the rendered result for clipping.
+- Preserve the supplied product artwork in [assets/logos](./assets/logos/) and its Copilot, SharePoint, Teams order. Keep aspect ratios and colors unchanged. Microsoft product names and logos are Microsoft trademarks; the skills' MIT license does not grant trademark rights.
 
 ## Code of conduct
 
