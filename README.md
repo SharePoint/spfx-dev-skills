@@ -42,6 +42,10 @@ plugins/spfx/skills/spfx/
 | **Data** | [Prefer PnPjs for ordinary SharePoint/Graph work](./plugins/spfx/skills/spfx/references/pnpjs.md), with host-specific exceptions. |
 | **Copilot UX** | [Build SPFx UI for Microsoft 365 Copilot](./plugins/spfx/skills/spfx/references/copilot.md): schemas, lifecycle, rendered-view context, brokered clients, testing and deployment. |
 
+## Evaluation results
+
+See the [model evaluation results](./EVALUATION-RESULTS.md) from **November 18, 2026**: **105 runs** across seven agent/model combinations comparing no skill, v1.0 and v1.1.2. For the tested SPFx 1.24.1 upgrade scenario, v1.1.2 achieved mean rubric scores of **100% for six combinations and 98% for the seventh**. The results page includes estimated inference costs, methodology and limitations.
+
 The original [evaluation article](https://devblogs.microsoft.com/microsoft365dev/behind-spfx-dev-skills-testing-what-agents-know-and-fixing-what-they-miss/) describes the historical **1.21.1-to-1.22.2** upgrade baseline. It is not validation of 1.24.1 or React 18.
 
 ## Install and use
