@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction
+    Title="BpmnViewerCommandSet"
+    RegistrationId="101"
+    RegistrationType="List"
+    Location="ClientSideExtension.ListViewCommandSet"
+    ClientSideComponentId="658fdb91-24e1-4003-b1fa-6b8e52159c94"
+    ClientSideComponentProperties="{&quot;pageUrl&quot;:&quot;SitePages/BpmnViewer.aspx&quot;}">
+  </CustomAction>
+</Elements>

@@ -1,0 +1,25 @@
+.bpmnModeler {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.canvas {
+  width: 100%;
+  height: calc(100vh - 200px);
+  min-height: 300px;
+  border: 1px solid;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.status {
+  padding: 16px;
+}

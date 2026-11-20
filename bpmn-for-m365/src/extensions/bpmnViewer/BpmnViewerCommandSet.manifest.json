@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+  "id": "658fdb91-24e1-4003-b1fa-6b8e52159c94",
+  "alias": "BpmnViewerCommandSet",
+  "componentType": "Extension",
+  "extensionType": "ListViewCommandSet",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "items": {
+    "OPEN_BPMN_VIEWER": {
+      "title": { "default": "Open in BPMN viewer" },
+      "type": "command"
+    },
+    "EDIT_BPMN_MODELER": {
+      "title": { "default": "Edit in BPMN modeler" },
+      "type": "command"
+    }
+  }
+}

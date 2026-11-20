@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bpmn-for-m-365-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/bpmnForM365/BpmnForM365WebPart.js",
+          "manifest": "./src/webparts/bpmnForM365/BpmnForM365WebPart.manifest.json"
+        }
+      ]
+    },
+    "bpmn-viewer-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/bpmnViewer/BpmnViewerCommandSet.js",
+          "manifest": "./src/extensions/bpmnViewer/BpmnViewerCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BpmnViewerCommandSetStrings": "lib/extensions/bpmnViewer/loc/{locale}.js",
+    "BpmnForM365WebPartStrings": "lib/webparts/bpmnForM365/loc/{locale}.js"
+  }
+}

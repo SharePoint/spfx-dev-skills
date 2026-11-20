@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "bpmn-for-m365",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "BpmnForM365",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "26.13.1",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "bpmn-for-m-365",
+    "libraryId": "e1e45df6-40a7-4bd1-9275-b93f724ef13f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "bpmn-for-m365 description",
+    "skipFeatureDeployment": true
+  }
+}
