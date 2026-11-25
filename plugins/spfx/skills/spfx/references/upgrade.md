@@ -13,6 +13,12 @@ npm install -g @pnp/cli-microsoft365@latest --silent --no-fund --no-audit
 1. **Ensure a clean, committed git state.** The upgrade rewrites many files; the user needs a clean baseline to review the diff and roll back. If the working tree is dirty, ask the user to commit or stash first.
 2. **Detect the current version.** Read `.yo-rc.json` (`@microsoft/generator-sharepoint.version`) and the `@microsoft/sp-*` versions in `package.json`. State the current and target versions before running anything.
 3. **Check Node/TypeScript compatibility for the target version.** Each SPFx version supports specific Node ranges. If the installed Node is outside the target's range the build will fail — surface this up front (use `m365 spfx doctor` if unsure).
+4. **Check third-party packages that depend on SPFx or React, before changing any dependency.** For every dependency other than SPFx and React themselves that references `@microsoft/sp-*` or `react`, read what each published version declares:
+   ```
+   npm view <package> dist-tags --json
+   npm view <package>@<version> dependencies peerDependencies --json
+   ```
+   A package that pins `@microsoft/sp-*` or `react` under `dependencies` installs its own nested copy, and its types then conflict with the project's after the upgrade (for example TS2322 on `ServiceScope`). Check every dist-tag, not only `latest`, for a release whose ranges include the target SPFx and React versions. If only a prerelease fits, or none does, present the options and their tradeoffs (prerelease, stay on the current SPFx version, replace or remove the control) and let the user choose before you modify dependencies.
 
 ## Run the upgrade
 
